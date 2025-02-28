@@ -41,12 +41,12 @@ def get(config):
     while point is None:
         response = requests.post(url, headers=headers, data=json.dumps(payload))
 
-        decode_and_save_image(response.json()["repData"]["originalImageBase64"], "../original_image.png")
-        decode_and_save_image(response.json()["repData"]["jigsawImageBase64"], "../jigsaw_image.png")
+        decode_and_save_image(response.json()["repData"]["originalImageBase64"], "original_image.png")
+        decode_and_save_image(response.json()["repData"]["jigsawImageBase64"], "jigsaw_image.png")
         secretKey = response.json()["repData"]["secretKey"]
         token = response.json()["repData"]["token"]
 
-        jigsaw = iio.imread("../jigsaw_image.png")
+        jigsaw = iio.imread("jigsaw_image.png")
         if jigsaw.shape[-1] == 4:
             alpha_channel = jigsaw[:, :, 3]
         else:
@@ -57,7 +57,7 @@ def get(config):
         else:
             raise ValueError("No non-transparent pixels found in the image.")
 
-        original = iio.imread("../original_image.png")
+        original = iio.imread("original_image.png")
         if original.shape[-1] == 4:
             original = original[:, :, :3]
         white_threshold = np.array([250, 250, 250])

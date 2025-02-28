@@ -9,19 +9,23 @@ def reserve(config, start_time, end_time, ground_index):
     captchaVerification = str(Verification())[2:-1]
     data = {
         "customerName": config["student_name"],
-        "customerId": "1437697929161785346",
+        "customerId": "1433554008613634050",
         "customerTel": config["student_tel"],
         "userNum": 1,
         "customerEmail": "",
         "gymId": "1297443858304540673",
         "gymName": "润杨羽毛球馆",
         "groundId": config["ground_url"][str(ground_index)],
+        "groundName": config["ground_name"][str(ground_index)],
         "groundType": "0",
         "messagePushType": "0",
         "isIllegal": "0",
         "orderDate": config["order_time"],
         "startTime": start_time,
         "endTime": end_time,
+        "tmpOrderDate": config["order_time"],
+        "tmpStartTime": start_time,
+        "tmpEndTime": end_time,
         "captchaVerification": captchaVerification
     }
     headers = config["headers"]
@@ -34,7 +38,7 @@ def reserve(config, start_time, end_time, ground_index):
             return True
         else:
             print("Failed to reserve Ground " + str(ground_index) + " from " + start_time + " to " + end_time)
-            # print(re.text)
+            print(re.text)
             return False
     except requests.RequestException as e:
         print(f"{e}")
