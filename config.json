@@ -1,0 +1,44 @@
+{
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Connection": "keep-alive",
+    "Content-Type": "application/json",
+    "Host": "reservation.sustech.edu.cn",
+    "Origin": "https://reservation.sustech.edu.cn",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Language/en ColorScheme/Light DistType/publish-store wxwork/4.1.32 (MicroMessenger/6.2) WeChat/2.0.4 wwmver/3.26.15.616 Safari/605.1.15"
+  },
+  "ground_url": {
+    "1": "1298272433186332673",
+    "2": "1298272520994086913",
+    "3": "1298272615009411073",
+    "4": "1298272709167341570",
+    "5": "1298272791098875905",
+    "6": "1298273087183183874",
+    "7": "1298273175146127362",
+    "8": "1298273265650819073",
+    "9": "1298273399927267330",
+    "10": "1298273500317933570"
+  },
+  "student_name": "江睿翔",
+  "student_id": "12111611",
+  "student_tel": "18130153162",
+  "start_time": [
+    "2025-03-03 20:00:00",
+    "2025-03-03 21:00:00"
+  ],
+  "end_time": [
+    "2025-03-03 21:00:00",
+    "2025-03-03 22:00:00"
+  ],
+  "token": "60dacad6-2c0a-4776-87e5-87ea5bca3833",
+  "captcha_payload": {
+    "captchaType": "blockPuzzle",
+    "clientUid": "slider-3c6ee719-99f3-48aa-a51e-f553f9b00c7e",
+    "ts": 1740655642708
+  }
+}
