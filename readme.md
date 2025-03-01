@@ -110,3 +110,22 @@ Now the problem is, given the `jigsawImage` and the `originalImage`, how we coul
 
 ### (4) How to pass the captcha verification 
 
+The main logic is shown in `src/captchaVerification.py`.
+
+You can use `base64.b64decode()` to save the `jigsawImage` and the `originalImage` to your local storage and check the two images. Also, the captcha product is designed by AJ Captcha and published at Gitee, as you can read the [source code](https://gitee.com/anji-plus/captcha/blob/dev/core/captcha/src/main/java/com/anji/captcha/service/impl/BlockPuzzleCaptchaServiceImpl.java) of AJ Captcha to have a better understanding of my solution. For instance, you may be curious about how to use a point to represent the place that the jigsaw image should be in the original image. The source code indicates we should use the top-left point to represent it.
+
+For example, a pair of original and jigsaw images are shown below.
+
+![](img/4-1.png)
+
+There are exactly three jigsaw holes in the original pictures, and they are polished by Gaussian Blur, and that's why it is hard to use a Computer Vision tool to find the proper place for the jigsaw directly. However, there is a simplier way to solve the problem. Note that in the jigsaw image there is only one part is not transparent. Find the top-left point of the nontransparent part, and we can get the y value of our solution point.
+
+The remaining thing is to find the x value, i.e., match our jigsaw image to one of the jigsaw holes in the original image. It's indicated by the source code that the points around the jigsaws holes will be set to white, which means we can find white areas to find the three jigsaws holes in the original image. Note that the original image may also contain some other white points, so the solution might be wrong. But no worries because we can post a new get request to have another try.
+
+After we find three areas surrounded by white, we extract their top-left points, and compare their y value to our solution point's y value. If there is exactly one match, it indicates we may find a right solution. If it finally turns out that we are wrong, just ask for a new shoot.
+
+Now the problem is to convert the coordinates to `pointJson`. According to the source code, we should set y to 5, then convert the point to a string in the form `{"x":xxx,"y":5}` and finally use `secretKey` to encrypt it use AES. As for AES, there is an [online tool](https://the-x.cn/cryptography/aes.aspx) to encrypt or decrypt a string using a provided key. Now that we have calculated the `pointJson`, we can post a check request and see if our solution is right. If the response contains `success: true`, we can move on to the next step.
+
+The next step is to calcluate `captchaVerification`. According to the source code, we should use AES with `secretKey` to encrypt the string `{tokenCaptcha}---{pointJson}` to get the `captchaVerification`. However, I found that SUSTech reservation system choose `{tokenCaptcha}---{point}` to be encrypted, for example, `tokentokentoken---{"x":xxxxxx,"y":5}`. For more information, please book a ground manually and use the online AES tool to decrypt the `captchaVerification` that you found in your saveOrder request.
+
+Finally, we send a saveOrder request to book a ground. Please refer to my code to find the parameters you should pass in the data part. If the response contains `success: true`, it means your reservation is success.
