@@ -1,4 +1,4 @@
 jigsaw_image.png
 original_image.png
 .idea/
-__pycache__/
+src/__pycache__/
