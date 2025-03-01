@@ -135,3 +135,5 @@ Finally, we send a saveOrder request to book a ground. Please refer to my code t
 Please make sure that you have read part 3 carefully, or you may have a misunderstanding of my code which leads to failure.
 
 To use my code, you only need to modify `config.json`. In detail, you need to change `student_name`, `student_id`, `student_tel`, `start_time`, `end_time` and `captcha_payload` to your own information. Before every 20:00, you should launch a WeCom built-in browser to get the `token`, i.e., `tokenUser`. After that, simply run `main.py` then it will help you to book.
+
+Sometimes you may need to change `open("config.json", "r", encoding='utf-8')` to `open("../config.json", "r", encoding='utf-8')` in `Load_json.py` to make it work properly.

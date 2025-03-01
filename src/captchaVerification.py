@@ -92,10 +92,10 @@ def check(config, point, secretKey, token):
 
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     if not response.json()["success"]:
-        print("Captcha verification failed!")
+        # print("Captcha verification failed!")
         return None
     else:
-        print("Captcha verification passed!")
+        # print("Captcha verification passed!")
         return aes_encrypt_by_bytes(token + "---" + point.toString(), secretKey)
 
 

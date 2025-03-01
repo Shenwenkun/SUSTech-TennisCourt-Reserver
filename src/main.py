@@ -31,14 +31,13 @@ def reserve(config, start_time, end_time, ground_index):
     headers = config["headers"]
     try:
         re = requests.post(url, json=data, headers=headers)
-        re.raise_for_status()
         re_data = json.loads(re.text)
         if re_data["success"]:
             print("You have reserved Ground " + str(ground_index) + " from " + start_time + " to " + end_time)
             return True
         else:
             print("Failed to reserve Ground " + str(ground_index) + " from " + start_time + " to " + end_time)
-            print(re.text)
+            # print(re.text)
             return False
     except requests.RequestException as e:
         print(f"{e}")
@@ -51,6 +50,11 @@ if __name__ == "__main__":
         for ground_id in list(config["ground_url"].keys()):
             if ground_id == "3" or ground_id == "4" or ground_id == "8" or ground_id == "10":
                 continue
-            if reserve(config, start_time, end_time, ground_id):
+            print(f"Reserve Ground {ground_id} from {start_time} to {end_time}")
+            result = False
+            try:
+                result = reserve(config, start_time, end_time, ground_id)
+            except Exception as e:
+                pass
+            if result:
                 break
-            sleep(0.5)
