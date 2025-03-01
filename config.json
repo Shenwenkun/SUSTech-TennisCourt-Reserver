@@ -36,7 +36,7 @@
     "9": "9号场",
     "10": "1号场"
   },
-  "student_name": "江睿翔",
+  "student_name": "Nai Long",
   "student_id": "12111611",
   "student_tel": "18130153162",
   "start_time": [
@@ -47,7 +47,7 @@
     "2025-03-03 21:00:00",
     "2025-03-03 22:00:00"
   ],
-  "token": "1b452e31-1685-4f62-9530-f0f2b58cf340",
+  "token": "replace with your own token",
   "captcha_payload": {
     "captchaType": "blockPuzzle",
     "clientUid": "slider-3c6ee719-99f3-48aa-a51e-f553f9b00c7e",

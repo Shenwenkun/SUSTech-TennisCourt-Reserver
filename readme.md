@@ -14,7 +14,7 @@ It would be better if you are good at computer networks.
 
 ## 3. Theory for a reserver
 
-Briefly, the path to make a reservation is:
+Originally, the path to make a reservation is:
 
 - curl `https://open.weixin.qq.com/connect/oauth2/authorize?appid=CORPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_base&state=STATE&agentid=AGENTID#wechat_redirect`
 - be redirected to `https://reservation.sustech.edu.cn/clientMobile.html?code=CODE&state=STATE#/reservation/gym`
