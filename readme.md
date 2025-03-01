@@ -129,3 +129,9 @@ Now the problem is to convert the coordinates to `pointJson`. According to the s
 The next step is to calcluate `captchaVerification`. According to the source code, we should use AES with `secretKey` to encrypt the string `{tokenCaptcha}---{pointJson}` to get the `captchaVerification`. However, I found that SUSTech reservation system choose `{tokenCaptcha}---{point}` to be encrypted, for example, `tokentokentoken---{"x":xxxxxx,"y":5}`. For more information, please book a ground manually and use the online AES tool to decrypt the `captchaVerification` that you found in your saveOrder request.
 
 Finally, we send a saveOrder request to book a ground. Please refer to my code to find the parameters you should pass in the data part. If the response contains `success: true`, it means your reservation is success.
+
+## 4. How to use my code
+
+Please make sure that you have read part 3 carefully, or you may have a misunderstanding of my code which leads to failure.
+
+To use my code, you only need to modify `config.json`. In detail, you need to change `student_name`, `student_id`, `student_tel`, `start_time`, `end_time` and `captcha_payload` to your own information. Before every 20:00, you should launch a WeCom built-in browser to get the `token`, i.e., `tokenUser`. After that, simply run `main.py` then it will help you to book.
