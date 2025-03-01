@@ -57,6 +57,8 @@ You will find some requests, like `getAgreement`. Just choose one, and click "He
 
 ![](img/2-4.png)
 
+**Note that this token is very important, and we will use it in the following part.** Please keep in mind that we will encounter a new token in the captcha part, but the two tokens are not the same. I will use `tokenUser` and `tokenCaptcha` to tell them.
+
 ### (3) How to make a reservation
 
 Based on the token, you can do anything use a script by sending a request as long as you can provided the right url and data. Note that a request contains three important parts, url, data, and header. To find what requests that you can send, you can click the buttons in the page and focus on the requests list shown in the element inspector window.
@@ -64,4 +66,47 @@ Based on the token, you can do anything use a script by sending a request as lon
 For example, we open the page shown below and focus on the `getOrderTimeConfigList` request.
 
 ![](img/3-1.png)
+
+It means, if you send a request with
+
+- url: `https://reservation.sustech.edu.cn/api/blade-app/qywx/getOrderTimeConfigList?groundId=1298272433186332673&startDate=2025-03-01&endDate=2025-03-07&userid=xxxxxxxx&token=xxxxxx`
+- method: GET
+- data: None
+- header: something like `Accept`, `Accept-Encoding`, `Referer` and `User-Agent`
+
+and you will get a response similar to the figure below.
+
+![](img/3-2.png)
+
+For those requests that have a data field, you can also check Request object tree in the same place.
+
+You just need to write a Python script to send the request and catch the response, then you can print the text of the response and find anything you are interested in.
+
+Now let's take a look at things happened in the procedure of a success reservation. You need to find a available ground and book it manually. Focus on the requests **in the time order**. After I booked a ground, the requests are shown in the figure below (but not in the time order).
+
+![](img/3-3.png)
+
+Ignore the process you find a free ground and focus on what happened from the time that you are right about to click the book button. A manual reservation process is that you click the book button, pass the captcha verification, then send a reservation request to the backend. Let's see the requests shown in the element inspector. In the table below, I emit the `https://reservation.sustech.edu.cn/api/` to simplify the Url part.
+
+| Request Name |                       Url                       |                      Request Data                      | Response Data |                            Timing                            |             Operation              |
+| :----------: | :---------------------------------------------: | :----------------------------------------------------: | :-----------: | :----------------------------------------------------------: | :--------------------------------: |
+|     get      |                  `captcha/get`                  |            `captchaType`, `clientUid`, `ts`            |   `repData`   |            Once you enter the page to choose time            |     Ask for a captcha picture      |
+|    check     |                 `captcha/check`                 |          `captchaType`, `pointJson`, `token`           |   `repData`   |            Once you finish a captcha verification            | Check if you pass the verification |
+|     get      |                  `captcha/get`                  |            `captchaType`, `clientUid`, `ts`            |   `repData`   | Once you finish a captcha verification, the website would ask for a new captcha no matter if you passed or failed |     Ask for a captcha picture      |
+|  saveOrder   | `blade-app/qywx/saveOrder?userid=xxx&token=xxx` | `captchaVerification`, `customerId`, `startTime`, etc. |    `data`     |       Once you pass the previous captcha verification        | Send a request to finish the order |
+
+Hence, the idea to book a ground with a Python script is quite simple. You should follow this steps:
+
+-   open a reservation page from your WeCom app and take down the `token` mentioned in (2), and regard it as `tokenUser`
+-   send a POST request named get (**note that the request method should be POST but not GET**) with a fine-designed payload data which contains `captchaType`, `clientUid` and `ts`; the `captchaType` is always `blockPuzzle`, as you can find your own `clientUid` and `ts` by clicking the reservation button which will ask for a captcha
+-   get the response data of get, and you should take down the `secretKey`, `token`, `jigsawImageBase64` and `originalImageBase64` for future usage; note that I will regard `tokenCaptcha` as the `token` found here
+-   find the place that you should put the `jigsawImage` to and return the coordinates of the point
+-   send a POST request named check with a data which contains `captchaType`, `pointJson` and `token`; you should find a proper way to convert the coordinates to the `pointJson` and put `tokenCaptcha` here
+-   get the response data of check, and you will get `success: true` if you passed the captcha verification 
+-   send a POST request named saveOrder with a data which contains many important things like `captchaVerification`; you can refer to my code to identify what you should write in the data, and you should find a way to construct the right `captchaVerification`
+-   get the response data of saveOrder, and you will get `success: true` if you booked the ground successfully 
+
+Now the problem is, given the `jigsawImage` and the `originalImage`, how we could find the proper point, pass the verification and get the right `captchaVerification`.
+
+### (4) How to pass the captcha verification 
 
