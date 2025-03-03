@@ -6,7 +6,7 @@ from captchaVerification import *
 def reserve(config, start_time, end_time, ground_index):
     url = "https://reservation.sustech.edu.cn/api/blade-app/qywx/saveOrder?userid=" + config["student_id"] \
           + "&token=" + config["token"]
-    captchaVerification = str(Verification())[2:-1]
+    captchaVerification = str(Verification())[2:-1]  # The original value seems like b'xxxxxxxx', so I use [2:-1]
     data = {
         "customerName": config["student_name"],
         "customerId": "1433554008613634050",
@@ -36,8 +36,7 @@ def reserve(config, start_time, end_time, ground_index):
             print("You have reserved Ground " + str(ground_index) + " from " + start_time + " to " + end_time)
             return True
         else:
-            print("Failed to reserve Ground " + str(ground_index) + " from " + start_time + " to " + end_time)
-            # print(re.text)
+            print(f"Failed to reserve Ground {ground_index} from {start_time} to {end_time} --> {re.text}")
             return False
     except requests.RequestException as e:
         print(f"{e}")

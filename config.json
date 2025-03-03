@@ -1,4 +1,19 @@
 {
+  "start_time": [
+    "2025-03-10 20:00:00",
+    "2025-03-10 21:00:00",
+    "2025-03-10 19:00:00"
+  ],
+  "end_time": [
+    "2025-03-10 21:00:00",
+    "2025-03-10 22:00:00",
+    "2025-03-10 20:00:00"
+  ],
+  "student_name": "奶龙",
+  "student_id": "12111611",
+  "student_tel": "18130153162",
+  "token": "fill it with your own token",
+
   "headers": {
     "Accept": "application/json, text/plain, */*",
     "Accept-Encoding": "gzip, deflate, br",
@@ -36,20 +51,6 @@
     "9": "9号场",
     "10": "10号场"
   },
-  "student_name": "江睿翔",
-  "student_id": "12111611",
-  "student_tel": "18130153162",
-  "start_time": [
-    "2025-03-08 20:00:00",
-    "2025-03-08 21:00:00",
-    "2025-03-08 19:00:00"
-  ],
-  "end_time": [
-    "2025-03-08 21:00:00",
-    "2025-03-08 22:00:00",
-    "2025-03-08 20:00:00"
-  ],
-  "token": "3ae15cb7-9e3b-4678-8a66-b389ea0a9f4a",
   "captcha_payload": {
     "captchaType": "blockPuzzle",
     "clientUid": "slider-3c6ee719-99f3-48aa-a51e-f553f9b00c7e",

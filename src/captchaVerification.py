@@ -1,4 +1,6 @@
 import random
+import time
+
 import numpy as np
 import imageio.v3 as iio
 import requests
@@ -79,7 +81,7 @@ def get(config):
     point.x = point.x + random.random()
     return point, secretKey, token
 
-def check(config, point, secretKey, token):
+def check(config, point, secretKey, token, timeout=3):
     point.y = 5
     url = "https://reservation.sustech.edu.cn/api/captcha/check"
     headers = config["headers"]
@@ -90,7 +92,11 @@ def check(config, point, secretKey, token):
         "token": str(token)
     }
 
-    response = requests.post(url, headers=headers, data=json.dumps(payload))
+    try:
+        response = requests.post(url, headers=headers, data=json.dumps(payload), timeout=timeout)
+    except requests.exceptions.Timeout:
+        return None
+
     if not response.json()["success"]:
         # print("Captcha verification failed!")
         return None
@@ -99,15 +105,17 @@ def check(config, point, secretKey, token):
         return aes_encrypt_by_bytes(token + "---" + point.toString(), secretKey)
 
 
-def Verification():
+def Verification(max_retries=2):
     config = get_config()
-    while True:
+    attempt = 0
+    while attempt < max_retries:
         point, secretKey, token = get(config)
         verification = check(config, point, secretKey, token)
-        get(config)
         if verification is None:
+            attempt += 1
             continue
-        return str(verification)
+        else:
+            return str(verification)
 
 
 if __name__ == "__main__":
