@@ -1,59 +1,54 @@
 {
-  "start_time": [
-    "2025-03-10 20:00:00",
-    "2025-03-10 21:00:00",
-    "2025-03-10 19:00:00"
-  ],
-  "end_time": [
-    "2025-03-10 21:00:00",
-    "2025-03-10 22:00:00",
-    "2025-03-10 20:00:00"
-  ],
-  "student_name": "奶龙",
-  "student_id": "12111611",
-  "student_tel": "18130153162",
-  "token": "fill it with your own token",
-
-  "headers": {
-    "Accept": "application/json, text/plain, */*",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Connection": "keep-alive",
-    "Content-Type": "application/json",
-    "Host": "reservation.sustech.edu.cn",
-    "Origin": "https://reservation.sustech.edu.cn",
-    "Sec-Fetch-Dest": "empty",
-    "Sec-Fetch-Mode": "cors",
-    "Sec-Fetch-Site": "same-origin",
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Language/en ColorScheme/Light DistType/publish-store wxwork/4.1.32 (MicroMessenger/6.2) WeChat/2.0.4 wwmver/3.26.15.616 Safari/605.1.15"
-  },
-  "ground_url": {
-    "1": "1298272433186332673",
-    "2": "1298272520994086913",
-    "3": "1298272615009411073",
-    "4": "1298272709167341570",
-    "5": "1298272791098875905",
-    "6": "1298273087183183874",
-    "7": "1298273175146127362",
-    "8": "1298273265650819073",
-    "9": "1298273399927267330",
-    "10": "1298273500317933570"
-  },
-  "ground_name": {
-    "1": "1号场",
-    "2": "2号场",
-    "3": "3号场",
-    "4": "4号场",
-    "5": "5号场",
-    "6": "6号场",
-    "7": "7号场",
-    "8": "8号场",
-    "9": "9号场",
-    "10": "10号场"
-  },
-  "captcha_payload": {
-    "captchaType": "blockPuzzle",
-    "clientUid": "slider-3c6ee719-99f3-48aa-a51e-f553f9b00c7e",
-    "ts": 1740655642708
-  }
+    "start_time": [
+        "2025-09-21 21:00:00"
+    ],
+    "end_time": [
+        "2025-09-21 22:00:00"
+    ],
+    "student_name": "奶龙",
+    "student_id": "12211717",
+    "student_tel": "13265718908",
+    "token": "01e460bb-631c-404f-a92b-2eb81c2c8ae4",
+    "headers": {
+        "accept": "application/json, text/plain, */*",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "zh-CN,zh;q=0.9",
+        "content-length": "635",
+        "content-type": "application/json",
+        "origin": "https://reservation.sustech.edu.cn",
+        "sec-ch-ua": "\"Chromium\";v=\"107\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "Windows",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.5304.110 Safari/537.36 Language/zh ColorScheme/Light wxwork/4.1.39 (MicroMessenger/6.2) WindowsWechat  MailPlugin_Electron WeMail embeddisk wwmver/3.26.39.639 noMediaCs/true"
+    },
+    "ground_url": {
+        "0": "1298266739389292545",
+        "1": "1298267145322422273",
+        "2": "1298267438957256705",
+        "3": "1298266633873186817",
+        "4": "1298267016767004674",
+        "5": "1298267247285952514",
+        "6": "1298266458362535938",
+        "7": "1298267438957256706",
+        "8": "1298266889507627010"
+    },
+    "ground_name": {
+        "0": "3号场",
+        "1": "6号场",
+        "2": "练习场A",
+        "3": "2号场",
+        "4": "5号场",
+        "5": "7号场",
+        "6": "1号场",
+        "7": "练习场B",
+        "8": "4号场"
+    },
+    "captcha_payload": {
+        "captchaType": "blockPuzzle",
+        "clientUid": "slider-1e7db95f-c471-4ed2-baf7-d22ab38aa268",
+        "ts": 1754185596565
+    }
 }
