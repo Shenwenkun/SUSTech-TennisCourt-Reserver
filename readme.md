@@ -4,7 +4,7 @@
 
 A reservation is typically from a phone or a computer, which launches a browser to complete. It costs much flow rate and higher load for the server. Hence, I developped this tool, pursuing the simplest way to book a ground efficiently and reduce the load on the server side.
 
-It is available at 2025/03/01.
+It is available at 2025/09/23.
 
 ## 2. Requirements
 
