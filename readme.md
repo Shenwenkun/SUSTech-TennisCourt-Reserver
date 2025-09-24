@@ -1,5 +1,5 @@
 # SUSTech Venue Reserver
-该脚本fork from https://github.com/RuixiangJiang/SUSTech-Runyang-Reserve，我只修改了球场相关配置。
+该脚本fork from https://github.com/RuixiangJiang/SUSTech-Runyang-Reserve ，我只修改了球场相关配置。
 ## 预约步骤
 1. 打开企业微信，按ctrl+alt+shift+D，进入开发者模式
 ![](img/step1.png)
