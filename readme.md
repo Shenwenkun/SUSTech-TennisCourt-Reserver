@@ -1,6 +1,18 @@
 # SUSTech Venue Reserver
-该脚本fork from https://github.com/RuixiangJiang/SUSTech-Runyang-Reserve
-
+该脚本fork from https://github.com/RuixiangJiang/SUSTech-Runyang-Reserve，我只修改了球场相关配置。
+## 预约步骤
+1. 打开企业微信，按ctrl+alt+shift+D，进入开发者模式
+![](img/step1.png)
+2. 点击场地预约，右键点击“欣园网球场”。
+![](img/step2.png)
+3. 点击`showDevTools`，再点击`欣园网球场`。
+![](img/step3.png)
+4. 预约一个练习场，找到自己的`clientUid`和`ts`，并填入脚本中的config.json文件中相应位置。
+![](img/step4.png)
+5. 在config.json中填写自己的信息（包括预约时间、学生id、学生名字、学生电话）
+![](img/step5.png)
+6. 每天晚上7点55（每天晚上8点开放7天后的选场），进行前3步，找到你的token(token每5分钟左右会失效，所以最好靠近8点时进行预约)，填入config.json的token中，然后在快到8点前的8~5秒开始运行main.py即可
+![](img/step3-1.png)
 ## 1. Why you should use a reserver
 
 A reservation is typically from a phone or a computer, which launches a browser to complete. It costs much flow rate and higher load for the server. Hence, I developped this tool, pursuing the simplest way to book a ground efficiently and reduce the load on the server side.
