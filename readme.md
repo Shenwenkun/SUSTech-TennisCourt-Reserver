@@ -1,4 +1,5 @@
 # SUSTech Venue Reserver
+该脚本fork from https://github.com/RuixiangJiang/SUSTech-Runyang-Reserve
 
 ## 1. Why you should use a reserver
 
